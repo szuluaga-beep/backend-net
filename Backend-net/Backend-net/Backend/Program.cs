@@ -1,4 +1,5 @@
 using Backend.Data;
+using Backend.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Backend
@@ -16,6 +17,8 @@ namespace Backend
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer("name=LocalConnection"));
+
+            builder.Services.AddScoped<ICountryService, CountryService>();
 
             var app = builder.Build();
 
